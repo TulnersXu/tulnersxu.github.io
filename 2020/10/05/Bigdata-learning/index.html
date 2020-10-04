@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Bigdata learning | TulnersXu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="菜鸡的学习过程点滴记录1. Hadoop环境搭建1.1 安装虚拟机以及Centos操作系统我的组合是VMware16、Centos8和Hadoop2.7.7。建议Centos系统是1个graph模式和2个multi模式。 图形界面和命令行切换： 1234systemctl get-default  # 查看目前的启动方式 multi-user是命令行模式，graphical是图形界面模式syste">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bigdata learning">
+<meta property="og:url" content="https://www.0v3rf10w.cn/2020/10/05/Bigdata-learning/index.html">
+<meta property="og:site_name" content="TulnersXu&#39;s Blog">
+<meta property="og:description" content="菜鸡的学习过程点滴记录1. Hadoop环境搭建1.1 安装虚拟机以及Centos操作系统我的组合是VMware16、Centos8和Hadoop2.7.7。建议Centos系统是1个graph模式和2个multi模式。 图形界面和命令行切换： 1234systemctl get-default  # 查看目前的启动方式 multi-user是命令行模式，graphical是图形界面模式syste">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-04T16:38:01.000Z">
+<meta property="article:modified_time" content="2020-10-04T16:38:36.849Z">
+<meta property="article:author" content="X1R">
+<meta property="article:tag" content="Bigdata">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="TulnersXu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">TulnersXu&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.0v3rf10w.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Bigdata-learning" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/05/Bigdata-learning/" class="article-date">
+  <time datetime="2020-10-04T16:38:01.000Z" itemprop="datePublished">2020-10-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Bigdata learning
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="菜鸡的学习过程点滴记录"><a href="#菜鸡的学习过程点滴记录" class="headerlink" title="菜鸡的学习过程点滴记录"></a>菜鸡的学习过程点滴记录</h2><h3 id="1-Hadoop环境搭建"><a href="#1-Hadoop环境搭建" class="headerlink" title="1. Hadoop环境搭建"></a>1. Hadoop环境搭建</h3><h4 id="1-1-安装虚拟机以及Centos操作系统"><a href="#1-1-安装虚拟机以及Centos操作系统" class="headerlink" title="1.1 安装虚拟机以及Centos操作系统"></a>1.1 安装虚拟机以及Centos操作系统</h4><p>我的组合是VMware16、Centos8和Hadoop2.7.7。建议Centos系统是1个graph模式和2个multi模式。</p>
+<p>图形界面和命令行切换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl get-default  # 查看目前的启动方式 multi-user是命令行模式，graphical是图形界面模式</span><br><span class="line">systemctl set-default graphical.target     # 设置为图形界面</span><br><span class="line">systemctl set-default multi-user.target    # 设置为命令行界面</span><br><span class="line">reboot	# 重启</span><br></pre></td></tr></table></figure>
+
+<p>如果开始安装的是命令行界面，则还需要安装gnome图形界面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall -y &quot;Server with GUI&quot;      # 安装图形界面软件包</span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line">systemctl enable gdm --now                 # 设置图形界面开机自启动</span><br><span class="line">reboot  # 重启</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Centos8右键菜单默认没有打开终端选项，我们可以设置快捷键来启动它</p>
+<p>设置 -&gt; 设备 -&gt; display -&gt; keyboard -&gt; 底部添加选项 -&gt; 点击</p>
+<p>名称: terminal</p>
+<p>命令: /usr/bin/gnome-terminal</p>
+<p>快捷键: 自己喜欢的组合键即可，我的是Ctrl+Alt+T</p>
+</blockquote>
+<h4 id="1-2-Hadoop的搭建"><a href="#1-2-Hadoop的搭建" class="headerlink" title="1.2 Hadoop的搭建"></a>1.2 Hadoop的搭建</h4><p>参考 <a target="_blank" rel="noopener" href="http://dblab.xmu.edu.cn/blog/install-hadoop/">Hadoop安装教程_单机/伪分布式配置_Hadoop2.6.0(2.7.1)/Ubuntu14.04(16.04)</a></p>
+<p><a target="_blank" rel="noopener" href="http://dblab.xmu.edu.cn/blog/install-hadoop-cluster/">Hadoop集群安装配置教程_Hadoop2.6.0_Ubuntu/CentOS</a></p>
+<p>一般的步骤是</p>
+<ol>
+<li>关闭并禁用防火墙</li>
+<li>创建hadoop用户</li>
+<li>更新yum</li>
+<li>安装java环境</li>
+<li>安装hadoop并配置</li>
+<li>克隆虚拟机</li>
+<li>配置网络</li>
+<li>修改slave的配置文件</li>
+<li>配置ssh免密登录</li>
+<li>在master上开启Hadoop</li>
+</ol>
+<p>过程中最容易出现的错误是最后两步，如果ssh配置后不行的话，可以试参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/snowbook/p/5671406.html">ssh配置authorized_keys后仍然需要输入密码的问题</a></p>
+<p>不过具体问题还得看日志，根据日志来解决问题。</p>
+<h3 id="2-编译运行WordCount程序"><a href="#2-编译运行WordCount程序" class="headerlink" title="2. 编译运行WordCount程序"></a>2. 编译运行WordCount程序</h3><p>参考 <a target="_blank" rel="noopener" href="http://dblab.xmu.edu.cn/blog/hadoop-build-project-by-shell/">使用命令行编译打包运行自己的MapReduce程序 Hadoop2.6.0</a></p>
+<p><a target="_blank" rel="noopener" href="http://dblab.xmu.edu.cn/blog/hadoop-build-project-using-eclipse/">使用Eclipse编译运行MapReduce程序_Hadoop2.6.0_Ubuntu/CentOS</a></p>
+<p>其中eclipse在Centos下的安装程序链接失效，截止2020.10.04，<a target="_blank" rel="noopener" href="http://eclipse.bluemix.net/packages/2020-09/data/eclipse-java-2020-09-R-linux-gtk-x86_64.tar.gz">http://eclipse.bluemix.net/packages/2020-09/data/eclipse-java-2020-09-R-linux-gtk-x86_64.tar.gz</a> 还可以下载。</p>
+<h5 id="过程中遇到的问题"><a href="#过程中遇到的问题" class="headerlink" title="过程中遇到的问题"></a>过程中遇到的问题</h5><ol>
+<li><p>Input path does not exist: hdfs://master:9000/user/hadoop/input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfs -mkdir -p &#x2F;user&#x2F;hadoop</span><br><span class="line">hdfs dfs -mkdir input</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;hadoop&#x2F;bin&#x2F;hadoop fs -put .&#x2F;input input</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>There are 0 datanode(s) running and no node(s) are excluded in this operation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首先见检查三台机器的网络连接，没有问题的话执行$HADOOP_HOME&#x2F;sbin&#x2F;stop-all.sh，关闭Hadoop之后重新启动。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Warn: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在~&#x2F;.bashrc下加入</span><br><span class="line">export JAVA_LIBRAY_PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;hadoop&#x2F;lib&#x2F;native</span><br><span class="line">并source ~&#x2F;.bashrc即可</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行eclipse提示java版本必须在11及以上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum安装jdk11</span><br><span class="line">alternatives的使用</span><br><span class="line">.bashrc的配置</span><br></pre></td></tr></table></figure>
+
+<p>参考 <a target="_blank" rel="noopener" href="https://www.jb51.net/article/146153.htm">Linux下怎么切换使用两个版本的JDK</a></p>
+</li>
+<li><p>Failed: java.net.SocketException: Network is unreachable</p>
+<p>检查Hadoop集群的网络连接</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.0v3rf10w.cn/2020/10/05/Bigdata-learning/" data-id="ckfvbyenp0000vs760vcudkow" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bigdata/" rel="tag">Bigdata</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bigdata/" rel="tag">Bigdata</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Bigdata/" style="font-size: 10px;">Bigdata</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/05/Bigdata-learning/">Bigdata learning</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 X1R<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
