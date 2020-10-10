@@ -90,6 +90,9 @@
             <a class="navbar-item "
                href="/categories">Categories</a>
             
+            <a class="navbar-item "
+               href="/about">About</a>
+            
         </div>
         
         <div class="navbar-menu navbar-end">
@@ -123,11 +126,16 @@
             
         </span>
         
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Bigdata/">Bigdata</a>
+        </span>
+        
         
         <span class="column is-narrow">
             
             
-            5 minutes read (About 752 words)
+            7 minutes read (About 1042 words)
         </span>
         
     </div>
@@ -184,7 +192,27 @@
 <p>&#x68C0;&#x67E5;Hadoop&#x96C6;&#x7FA4;&#x7684;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;</p>
 </li>
 </ol>
-</body></html>
+<h3 id="3-HDFS&#x4E0E;Shell&#x547D;&#x4EE4;&#x7684;&#x4EA4;&#x4E92;"><a href="#3-HDFS&#x4E0E;Shell&#x547D;&#x4EE4;&#x7684;&#x4EA4;&#x4E92;" class="headerlink" title="3. HDFS&#x4E0E;Shell&#x547D;&#x4EE4;&#x7684;&#x4EA4;&#x4E92;"></a>3. HDFS&#x4E0E;Shell&#x547D;&#x4EE4;&#x7684;&#x4EA4;&#x4E92;</h3><p>&#x53C2;&#x8003; <a target="_blank" rel="noopener" href="http://dblab.xmu.edu.cn/blog/290-2/">&#x5206;&#x5E03;&#x5F0F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;HDFS &#x5B66;&#x4E60;&#x6307;&#x5357;</a></p>
+<ol>
+<li><p>&#x8FD0;&#x884C;HDFSFileIfExist.java&#x65F6;except Connection refused</p>
+<p>&#x9996;&#x5148;&#x68C0;&#x67E5;/etc/hosts&#x662F;&#x5426;&#x6709;localhost IP&#x6620;&#x5C04;&#x5230;hadoop namenode&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x6E90;&#x4EE3;&#x7801;&#x4E2D;&#x4FEE;&#x6539;localhost&#x4E3A;namenode&#x7684;IP&#x3002;</p>
+</li>
+</ol>
+<h3 id="4-Spark&#x5B89;&#x88C5;&#x4E0E;&#x57FA;&#x7840;&#x4F7F;&#x7528;"><a href="#4-Spark&#x5B89;&#x88C5;&#x4E0E;&#x57FA;&#x7840;&#x4F7F;&#x7528;" class="headerlink" title="4. Spark&#x5B89;&#x88C5;&#x4E0E;&#x57FA;&#x7840;&#x4F7F;&#x7528;"></a>4. Spark&#x5B89;&#x88C5;&#x4E0E;&#x57FA;&#x7840;&#x4F7F;&#x7528;</h3><p>&#x53C2;&#x8003; <a target="_blank" rel="noopener" href="http://dblab.xmu.edu.cn/blog/spark-quick-start-guide/">Spark&#x5B89;&#x88C5;&#x4E0E;&#x57FA;&#x7840;&#x4F7F;&#x7528;</a></p>
+<ol>
+<li><p>&#x8FD0;&#x884C;spark-shell&#x5931;&#x8D25;<br>Failed to initialize compiler: object java.lang.Object in compiler mirror not found.</p>
+<p>&#x770B;&#x5B8C;&#x62A5;&#x9519;&#x65E5;&#x5FD7;&#x91CC;&#x7684;</p>
+<figure class="highlight shell hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">error: error while loading package, Missing dependency &apos;object java.lang.Object in compiler mirror&apos;, required by /usr/local/spark/lib/spark-assembly-1.6.0-hadoop2.2.0.jar(scala/package.class)</span><br><span class="line">error: error while loading package, Missing dependency &apos;object java.lang.Object in compiler mirror&apos;, required by /usr/local/spark/lib/spark-assembly-1.6.0-hadoop2.2.0.jar(scala/runtime/package.class)</span><br><span class="line"></span><br><span class="line">** Note that as of 2.8 scala does not assume use of the java classpath.</span><br><span class="line">** For the old behavior pass -usejavacp to scala, or if using a Settings</span><br><span class="line">** object programatically, settings.usejavacp.value = true.</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x5927;&#x6982;&#x5C31;&#x77E5;&#x9053;&#x662F;&#x54EA;&#x91CC;&#x51FA;&#x9519;&#x4E86;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x5B89;&#x88C5;Scala&#xFF0C;&#x7136;&#x540E;java -version&#x68C0;&#x67E5;Java&#x7248;&#x672C;&#xFF0C;&#x63A5;&#x7740;&#x67E5;&#x770B;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x91CC;&#x9762;JAVA_HOME&#x662F;&#x5426;&#x662F;1.8x&#x7248;&#x672C;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x6700;&#x540E;&#x68C0;&#x67E5;</p>
+<figure class="highlight shell hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /your/spark/home/</span><br><span class="line">vim ./bin/spark-shell</span><br><span class="line"><span class="hljs-meta">#</span><span class="hljs-bash"> settings.usejavacp.value = <span class="hljs-literal">true</span>.</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="5-TensorFlow&#x73AF;&#x5883;&#x642D;&#x5EFA;"><a href="#5-TensorFlow&#x73AF;&#x5883;&#x642D;&#x5EFA;" class="headerlink" title="5. TensorFlow&#x73AF;&#x5883;&#x642D;&#x5EFA;"></a>5. TensorFlow&#x73AF;&#x5883;&#x642D;&#x5EFA;</h3></body></html>
     
     </div>
     
