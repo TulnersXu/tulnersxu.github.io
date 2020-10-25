@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Data analysis - TulnersXu&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="苟有恒，何须三更眠五更起。">
+
+
+
+
+
+    <meta name="description" content="&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x7EDF;&amp;#x8BA1;&amp;#x56FE;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data analysis">
+<meta property="og:url" content="https://www.0v3rf10w.cn/2020/10/23/Data-analysis/index.html">
+<meta property="og:site_name" content="TulnersXu&#39;s Blog">
+<meta property="og:description" content="&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x7EDF;&amp;#x8BA1;&amp;#x56FE;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-23T13:56:59.000Z">
+<meta property="article:modified_time" content="2020-10-25T10:25:30.888Z">
+<meta property="article:author" content="X1R">
+<meta property="article:tag" content="visualize">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+            <a class="navbar-item "
+               href="/categories">Categories</a>
+            
+            <a class="navbar-item "
+               href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#常用的统计图">1&nbsp;&nbsp;<b>常用的统计图</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Python可视化">2&nbsp;&nbsp;<b>Python可视化</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#numpy">3&nbsp;&nbsp;<b>numpy</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#定义">3.1&nbsp;&nbsp;定义</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#使用">3.2&nbsp;&nbsp;使用</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#形状">3.3&nbsp;&nbsp;形状</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#计算">3.4&nbsp;&nbsp;计算</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#使用numpy读取数据">4&nbsp;&nbsp;<b>使用numpy读取数据</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#numpy索引和切片">5&nbsp;&nbsp;<b>numpy索引和切片</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#numpy三元运算符">6&nbsp;&nbsp;<b>numpy三元运算符</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#numpy中的裁剪clip">7&nbsp;&nbsp;<b>numpy中的裁剪clip</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#关于nan和inf">7.1&nbsp;&nbsp;关于nan和inf</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#numpy中常用的统计函数">8&nbsp;&nbsp;<b>numpy中常用的统计函数</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Data analysis
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2020-10-23T13:56:59.000Z" itemprop="datePublished">Oct 23 2020</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Data-analysis/">Data analysis</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            10 minutes read (About 1498 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><h2 id="&#x5E38;&#x7528;&#x7684;&#x7EDF;&#x8BA1;&#x56FE;"><a href="#&#x5E38;&#x7528;&#x7684;&#x7EDF;&#x8BA1;&#x56FE;" class="headerlink" title="&#x5E38;&#x7528;&#x7684;&#x7EDF;&#x8BA1;&#x56FE;"></a>&#x5E38;&#x7528;&#x7684;&#x7EDF;&#x8BA1;&#x56FE;</h2><a id="more"></a>
+
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8A%98%E7%BA%BF%E5%9B%BE">&#x6298;&#x7EBF;&#x56FE;</a>: &#x6298;&#x7EBF;&#x7684;&#x4E0A;&#x5347;&#x6216;&#x8005;&#x4E0B;&#x964D;&#x8868;&#x793A;&#x7EDF;&#x8BA1;&#x6570;&#x91CF;&#x7684;&#x589E;&#x51CF;&#x53D8;&#x5316;&#x7684;&#x7EDF;&#x8BA1;&#x56FE;&#x3002;&#xFF08;&#x53D8;&#x5316;&#xFF09;</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%9B%B4%E6%96%B9%E5%9B%BE/1103834">&#x76F4;&#x65B9;&#x56FE;</a>: &#x4E00;&#x7CFB;&#x5217;&#x9AD8;&#x4F4E;&#x4E0D;&#x7B49;&#x7684;&#x7EB5;&#x5411;&#x6761;&#x7EB9;&#x6216;&#x7EBF;&#x6BB5;&#x8868;&#x793A;&#x6570;&#x636E;&#x5206;&#x5E03;&#x60C5;&#x51B5;&#x3002;&#xFF08;&#x7EDF;&#x8BA1;&#xFF09;</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9D%A1%E5%BD%A2%E5%9B%BE">&#x6761;&#x5F62;&#x56FE;</a>: &#x6392;&#x5217;&#x5728;&#x5DE5;&#x4F5C;&#x8868;&#x7684;&#x5217;&#x6216;&#x884C;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x5230;&#x6761;&#x5F62;&#x56FE;&#x4E2D;&#x3002;&#xFF08;&#x7EDF;&#x8BA1;&#xFF09;</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%A3%E7%82%B9%E5%9B%BE">&#x6563;&#x70B9;&#x56FE;</a>: &#x591A;&#x4E2A;&#x5750;&#x6807;&#x70B9;&#xFF0C;&#x8003;&#x5BDF;&#x5750;&#x6807;&#x70B9;&#x5206;&#x5E03;&#xFF0C;&#x5224;&#x65AD;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x662F;&#x5426;&#x5B58;&#x5728;&#x67D0;&#x79CD;&#x5173;&#x8054;&#x3002;&#xFF08;&#x5206;&#x5E03;&#x89C4;&#x5F8B;&#xFF09;</p>
+<h2 id="Python&#x53EF;&#x89C6;&#x5316;"><a href="#Python&#x53EF;&#x89C6;&#x5316;" class="headerlink" title="Python&#x53EF;&#x89C6;&#x5316;"></a>Python&#x53EF;&#x89C6;&#x5316;</h2><p>&#x4F9D;&#x8D56;&#x7684;&#x5E93;matplotlib</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.rcParams[<span class="hljs-string">&apos;font.sans-serif&apos;</span>] = [<span class="hljs-string">&apos;SimHei&apos;</span>]  <span class="hljs-comment"># &#x6307;&#x5B9A;&#x9ED8;&#x8BA4;&#x5B57;&#x4F53;&#xFF1A;&#x89E3;&#x51B3;plot&#x4E0D;&#x80FD;&#x663E;&#x793A;&#x4E2D;&#x6587;&#x95EE;&#x9898;</span></span><br><span class="line">plt.rcParams[<span class="hljs-string">&apos;axes.unicode_minus&apos;</span>] = <span class="hljs-literal">False</span>    <span class="hljs-comment"># &#x89E3;&#x51B3;&#x4FDD;&#x5B58;&#x56FE;&#x50CF;&#x662F;&#x8D1F;&#x53F7;&apos;-&apos;&#x663E;&#x793A;&#x4E3A;&#x65B9;&#x5757;&#x7684;&#x95EE;&#x9898;</span></span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="hljs-number">20</span>, <span class="hljs-number">8</span>), </span><br><span class="line">           dpi=<span class="hljs-number">80</span>) <span class="hljs-comment"># &#x8C03;&#x7528;figure&#x5B9E;&#x4F8B;&#x8BBE;&#x7F6E;&#x56FE;&#x7247;&#x5927;&#x5C0F; dpi&#x53C2;&#x6570;&#x8BA9;&#x56FE;&#x7247;&#x66F4;&#x6E05;&#x6670;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># &#x7ED8;&#x5236;&#x6298;&#x7EBF;&#x56FE;&#xFF0C;&#x6709;&#x51E0;&#x6761;&#x8C03;&#x7528;&#x51E0;&#x6B21;plot&#x65B9;&#x6CD5;&#x3002;</span></span><br><span class="line">plt.plot(x, </span><br><span class="line">         y,						<span class="hljs-comment"># x&#x3001;y&#x8868;&#x793A;&#x5728;x&#x8F74;&#x548C;y&#x8F74;&#x7684;&#x6570;&#x636E; </span></span><br><span class="line">        label=<span class="hljs-string">&apos;&#x56FE;&#x4F8B;&#x540D;&#x79F0;&apos;</span>,		  <span class="hljs-comment"># &#x8BBE;&#x7F6E;&#x56FE;&#x4F8B;&#x540D;&#x79F0;</span></span><br><span class="line">        linestyle=<span class="hljs-string">&apos;-&apos;</span>, 			 <span class="hljs-comment"># &#x8BBE;&#x7F6E;&#x56FE;&#x7EBF;&#x7684;&#x98CE;&#x683C;</span></span><br><span class="line">        color=<span class="hljs-string">&apos;purple&apos;</span>,			 <span class="hljs-comment"># &#x8BBE;&#x7F6E;&#x56FE;&#x7EBF;&#x7684;&#x989C;&#x8272;</span></span><br><span class="line">        alpha=<span class="hljs-number">0.3</span>)				<span class="hljs-comment"># &#x8BBE;&#x7F6E;&#x56FE;&#x7EBF;&#x900F;&#x660E;&#x5EA6;</span></span><br><span class="line"><span class="hljs-comment"># ...</span></span><br><span class="line"><span class="hljs-comment"># plt.plot(x, y)</span></span><br><span class="line"></span><br><span class="line">label_x = list[x&#x8F74;&#x7684;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;]</span><br><span class="line">plt.xticks(list[x], 			<span class="hljs-comment"># &#x8BBE;&#x7F6E;x&#x8F74;&#x7684;&#x523B;&#x5EA6; list[x][::2]&#x517C;&#x5BB9;&#x6B65;&#x957F;</span></span><br><span class="line">           label_x, 			<span class="hljs-comment"># &#x8BBE;&#x7F6E;x&#x8F74;&#x7684;&#x6807;&#x7B7E;</span></span><br><span class="line">           ratotion=<span class="hljs-number">90</span>) 		<span class="hljs-comment"># &#x8BBE;&#x7F6E;&#x65CB;&#x8F6C;&#x7684;&#x5EA6;&#x6570;</span></span><br><span class="line">label_y = list[y&#x8F74;&#x7684;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;]</span><br><span class="line">plt.yticks(list[y], </span><br><span class="line">           label_y) 			<span class="hljs-comment"># &#x8BBE;&#x7F6E;y&#x8F74;&#x7684;&#x523B;&#x5EA6;&#x4EE5;&#x53CA;&#x6807;&#x7B7E;</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="hljs-string">&apos;&#x6DFB;&#x52A0;x&#x8F74;&#x7684;&#x8868;&#x793A;&#x4FE1;&#x606F;&apos;</span>)</span><br><span class="line">plt.ylabel(<span class="hljs-string">&apos;&#x6DFB;&#x52A0;y&#x8F74;&#x7684;&#x8868;&#x793A;&#x4FE1;&#x606F;&apos;</span>)</span><br><span class="line">plt.title(<span class="hljs-string">&apos;&#x6807;&#x9898;&apos;</span>)</span><br><span class="line"></span><br><span class="line">plt.grid(alpha=<span class="hljs-number">0.3</span>)				 <span class="hljs-comment"># &#x6DFB;&#x52A0;&#x7F51;&#x683C;&#x5E76;&#x8BBE;&#x7F6E;&#x900F;&#x660E;&#x5EA6;</span></span><br><span class="line">plt.legend(<span class="hljs-string">&apos;&#x6DFB;&#x52A0;&#x56FE;&#x4F8B;&apos;</span>) 			  <span class="hljs-comment"># &#x5BF9;&#x5E94;plot()&#x65B9;&#x6CD5;&#x4E2D;&#x7684;label&#x53C2;&#x6570;&#xFF0C;&#x89E3;&#x91CA;&#x7EBF;&#x6BB5;&#x8868;&#x793A;&#x7684;&#x5185;&#x5BB9;</span></span><br><span class="line">plt.savefig(<span class="hljs-string">&apos;name.png&apos;</span>) 		  <span class="hljs-comment"># &#x4FDD;&#x5B58;&#x56FE;&#x7247;&#x5230;&#x672C;&#x5730;</span></span><br><span class="line">plt.show() 						<span class="hljs-comment"># &#x753B;&#x51FA;&#x56FE;&#x5F62;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># &#x51E0;&#x79CD;&#x56FE;&#x4F8B;&#x7684;&#x65B9;&#x6CD5;</span></span><br><span class="line"><span class="hljs-comment"># &#x6298;&#x7EBF;&#x56FE;</span></span><br><span class="line">plt.plot()</span><br><span class="line"><span class="hljs-comment"># &#x6563;&#x70B9;&#x56FE;</span></span><br><span class="line">plt.scatter(x, y)</span><br><span class="line"><span class="hljs-comment"># &#x6761;&#x5F62;&#x56FE;</span></span><br><span class="line">plt.bar(list[x], width=<span class="hljs-string">&apos;&#x7EBF;&#x6761;&#x5BBD;&#x5EA6;&apos;</span>)</span><br><span class="line"><span class="hljs-comment"># &#x76F4;&#x65B9;&#x56FE;</span></span><br><span class="line"><span class="hljs-comment"># hist&#x65B9;&#x6CD5;&#x662F;&#x7528;&#x4E8E;&#x6CA1;&#x6709;&#x88AB;&#x7EDF;&#x8BA1;&#x8FC7;&#x7684;&#x6570;&#x636E;</span></span><br><span class="line">plt.hist(a, 					<span class="hljs-comment"># a&#x4E3A;&#x9700;&#x8981;&#x7EDF;&#x8BA1;&#x7684;&#x6570;&#x636E;</span></span><br><span class="line">         num_bins, 				 <span class="hljs-comment"># num_bins&#x4E3A;&#x5206;&#x7EC4;&#x7684;&#x7EC4;&#x6570;</span></span><br><span class="line">         normed=<span class="hljs-number">1</span>) 				 <span class="hljs-comment"># normal&#x53C2;&#x6570;&#x4E3A;&#x662F;&#x5426;&#x7ED8;&#x5236;&#x9891;&#x7387;&#x5206;&#x5E03;&#x76F4;&#x65B9;&#x56FE;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;&#x9891;&#x6570;&#x76F4;&#x65B9;&#x56FE;</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h2><h3 id="&#x5B9A;&#x4E49;"><a href="#&#x5B9A;&#x4E49;" class="headerlink" title="&#x5B9A;&#x4E49;"></a>&#x5B9A;&#x4E49;</h3><p>&#x662F;&#x4E00;&#x4E2A;Python&#x4E2D;&#x505A;&#x79D1;&#x5B66;&#x8BA1;&#x7B97;&#x7684;&#x57FA;&#x7840;&#x5E93;&#xFF0C;&#x91CD;&#x5728;&#x6570;&#x503C;&#x8BA1;&#x7B97;&#xFF0C;&#x591A;&#x7528;&#x4E8E;&#x5927;&#x578B;&#x3001;&#x591A;&#x7EF4;&#x6570;&#x7EC4;&#x4E0A;&#x6267;&#x884C;&#x6570;&#x503C;&#x8FD0;&#x7B97;&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;"><a href="#&#x4F7F;&#x7528;" class="headerlink" title="&#x4F7F;&#x7528;"></a>&#x4F7F;&#x7528;</h3><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># &#x4E09;&#x79CD;&#x521B;&#x5EFA;&#x6570;&#x7EC4;&#x7684;&#x65B9;&#x6CD5; [1, 2, 3, 4, 5]</span></span><br><span class="line">a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>])</span><br><span class="line">b = np.array(range(<span class="hljs-number">1</span>, <span class="hljs-number">6</span>))</span><br><span class="line">c = np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">6</span>)</span><br><span class="line">print(type(a))  				<span class="hljs-comment"># &#x8FD4;&#x56DE;a&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7C7B;&#x578B;</span></span><br><span class="line">print(a.dtype)  				<span class="hljs-comment"># dtype&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x5143;&#x7D20;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B; &#x5FC5;&#x987B;&#x662F;&#x540C;&#x4E00;&#x6570;&#x636E;&#x7C7B;&#x578B;</span></span><br><span class="line">print(a.astype(np.float)) 		 <span class="hljs-comment"># &#x8FD4;&#x56DE;&#x4E34;&#x65F6;&#x4FEE;&#x6539;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x7EC4;</span></span><br><span class="line"></span><br><span class="line">b = np.array([<span class="hljs-number">0.048</span>, <span class="hljs-number">0.266</span>])</span><br><span class="line">print(np.round(b,<span class="hljs-number">2</span>))			<span class="hljs-comment"># &#x8BBE;&#x7F6E;b&#x7684;&#x8F93;&#x51FA;&#x683C;&#x5F0F;&#x4E3A;&#x4FDD;&#x7559;&#x4E24;&#x4F4D;&#x5C0F;&#x6570;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="&#x5F62;&#x72B6;"><a href="#&#x5F62;&#x72B6;" class="headerlink" title="&#x5F62;&#x72B6;"></a>&#x5F62;&#x72B6;</h3><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.array([[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]])</span><br><span class="line">print(a.shape)					 <span class="hljs-comment"># (2, 6)</span></span><br><span class="line">a.reshape(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)</span><br><span class="line">print(a)						<span class="hljs-comment"># [[3, 4, 5, 6, 7, 8], [4, 5, 6, 7, 8, 9]]</span></span><br><span class="line">a = a.reshape(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)</span><br><span class="line">print(a)						<span class="hljs-comment"># [[3 4 5 6] [7 8 4 5] [6 7 8 9]] &#x8FD9;&#x91CC;&#x7684;a&#x548C;&#x7B2C;&#x4E09;&#x884C;&#x7684;a&#x4E0D;&#x662F;&#x540C;&#x4E00;&#x4E2A;a</span></span><br><span class="line">print(a.flatten())				 <span class="hljs-comment"># array([3, 4, 5, 6, 7, 8, 4, 5, 6, 7, 8, 9])</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="&#x8BA1;&#x7B97;"><a href="#&#x8BA1;&#x7B97;" class="headerlink" title="&#x8BA1;&#x7B97;"></a>&#x8BA1;&#x7B97;</h3><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.array([[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]])</span><br><span class="line">print(a)</span><br><span class="line">a = a + <span class="hljs-number">1</span></span><br><span class="line">print(a)</span><br><span class="line">a = a * <span class="hljs-number">3</span></span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># &#x8FD0;&#x884C;&#x7ED3;&#x679C;</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="hljs-string">[[3 4 5 6 7 8]</span></span><br><span class="line"><span class="hljs-string"> [4 5 6 7 8 9]]</span></span><br><span class="line"><span class="hljs-string">[[ 4  5  6  7  8  9]</span></span><br><span class="line"><span class="hljs-string"> [ 5  6  7  8  9 10]]</span></span><br><span class="line"><span class="hljs-string">[[12 15 18 21 24 27]</span></span><br><span class="line"><span class="hljs-string"> [15 18 21 24 27 30]]</span></span><br><span class="line"><span class="hljs-string"> &quot;&quot;&quot;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>&#x4E0A;&#x8FF0;&#x7684;&#x80FD;&#x591F;&#x6B63;&#x786E;&#x8BA1;&#x7B97;&#x662F;&#x56E0;&#x4E3A;numpy&#x7684;<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiaxin359/p/9021726.html">&#x5E7F;&#x64AD;&#x673A;&#x5236;</a>&#x3002;</p>
+<p>&#x5927;&#x81F4;&#x610F;&#x601D;&#x662F;</p>
+<ol>
+<li><p>&#x7EF4;&#x5EA6;&#x76F8;&#x540C;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x65B9;&#x8F74;&#x957F;&#x5EA6;&#x4E3A;1</p>
+<p>&#x4F8B;&#x5982;shape&#x4E3A;(3,3)&#x548C;(3,1)&#x7684;&#x6570;&#x7EC4;&#x80FD;&#x591F;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x3002;</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]])</span><br><span class="line">b = np.array([[<span class="hljs-number">1</span>], [<span class="hljs-number">2</span>], [<span class="hljs-number">3</span>]])</span><br><span class="line">print(a + b)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># &#x8FD0;&#x884C;&#x7ED3;&#x679C;</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="hljs-string">[[ 2  3  4]</span></span><br><span class="line"><span class="hljs-string"> [ 6  7  8]</span></span><br><span class="line"><span class="hljs-string"> [10 11 12]]</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>&#x7EF4;&#x5EA6;&#x4E0D;&#x540C;&#xFF0C;&#x540E;&#x7F18;&#x7EF4;&#x5EA6;&#x7684;&#x8F74;&#x957F;&#x5EA6;&#x76F8;&#x540C;</p>
+<p>&#x4F8B;&#x5982;shape&#x4E3A;(3,3,2)&#x548C;(3,2)&#x7684;&#x6570;&#x7EC4;&#x80FD;&#x591F;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x3002;</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.array([[[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]], </span><br><span class="line">              [[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]], </span><br><span class="line">              [[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]]])</span><br><span class="line">b = np.array([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">6</span>]])</span><br><span class="line">print(a+b)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># &#x8FD0;&#x884C;&#x7ED3;&#x679C;</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="hljs-string">[[[ 2  4]</span></span><br><span class="line"><span class="hljs-string">  [ 6  8]</span></span><br><span class="line"><span class="hljs-string">  [10 12]]</span></span><br><span class="line"><span class="hljs-string"> [[ 2  4]</span></span><br><span class="line"><span class="hljs-string">  [ 6  8]</span></span><br><span class="line"><span class="hljs-string">  [10 12]]</span></span><br><span class="line"><span class="hljs-string"> [[ 2  4]</span></span><br><span class="line"><span class="hljs-string">  [ 6  8]</span></span><br><span class="line"><span class="hljs-string">  [10 12]]]</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="&#x4F7F;&#x7528;numpy&#x8BFB;&#x53D6;&#x6570;&#x636E;"><a href="#&#x4F7F;&#x7528;numpy&#x8BFB;&#x53D6;&#x6570;&#x636E;" class="headerlink" title="&#x4F7F;&#x7528;numpy&#x8BFB;&#x53D6;&#x6570;&#x636E;"></a>&#x4F7F;&#x7528;numpy&#x8BFB;&#x53D6;&#x6570;&#x636E;</h2><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">loadtxt(fname, dtype=float, comments=<span class="hljs-string">&apos;#&apos;</span>, delimiter=<span class="hljs-literal">None</span>,</span><br><span class="line">            converters=<span class="hljs-literal">None</span>, skiprows=<span class="hljs-number">0</span>, usecols=<span class="hljs-literal">None</span>, unpack=<span class="hljs-literal">False</span>,</span><br><span class="line">        ndmin=<span class="hljs-number">0</span>, encoding=<span class="hljs-string">&apos;bytes&apos;</span>, max_rows=<span class="hljs-literal">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="hljs-string">fname: &#x6587;&#x4EF6;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x4EA7;&#x751F;&#x5668;&#xFF0C;&#x652F;&#x6301;.gz&#x6216;bz2&#x538B;&#x7F29;&#x6587;&#x4EF6;</span></span><br><span class="line"><span class="hljs-string">dtype: &#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x9ED8;&#x8BA4;np.float</span></span><br><span class="line"><span class="hljs-string">delimiter: &#x8BFB;&#x53D6;&#x6570;&#x636E;&#x7684;&#x5206;&#x9694;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x9ED8;&#x8BA4;&#x7A7A;&#x683C;</span></span><br><span class="line"><span class="hljs-string">skiprows: &#x8DF3;&#x8FC7;&#x8BFB;&#x53D6;&#x524D;x&#x884C;</span></span><br><span class="line"><span class="hljs-string">usecols: &#x8BFB;&#x53D6;&#x6307;&#x5B9A;&#x7684;&#x5217;&#xFF0C;&#x7D22;&#x5F15;&#xFF0C;&#x5143;&#x7EC4;&#x7C7B;&#x578B;</span></span><br><span class="line"><span class="hljs-string">unpack: &#x8BB2;&#x6570;&#x636E;&#x5199;&#x5165;&#x6570;&#x7EC4;&#x53D8;&#x91CF;&#xFF0C;False&#x53EA;&#x5199;&#x5165;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x53D8;&#x91CF;&#xFF0C;True&#x53EF;&#x5199;&#x5165;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x7EC4;&#x53D8;&#x91CF;</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># &#x57FA;&#x672C;&#x4F7F;&#x7528;&#x6848;&#x4F8B;</span></span><br><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> io <span class="hljs-keyword">import</span> StringIO   <span class="hljs-comment"># StringIO behaves like a file object</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>c = StringIO(<span class="hljs-string">u&quot;0 1\\n2 3&quot;</span>)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>np.loadtxt(c)</span><br><span class="line">array([[<span class="hljs-number">0.</span>, <span class="hljs-number">1.</span>],</span><br><span class="line">      [<span class="hljs-number">2.</span>, <span class="hljs-number">3.</span>]])</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>d = StringIO(<span class="hljs-string">u&quot;M 21 72\\nF 35 58&quot;</span>)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>np.loadtxt(d, dtype={<span class="hljs-string">&apos;names&apos;</span>: (<span class="hljs-string">&apos;gender&apos;</span>, <span class="hljs-string">&apos;age&apos;</span>, <span class="hljs-string">&apos;weight&apos;</span>),</span><br><span class="line">    ...                      <span class="hljs-string">&apos;formats&apos;</span>: (<span class="hljs-string">&apos;S1&apos;</span>, <span class="hljs-string">&apos;i4&apos;</span>, <span class="hljs-string">&apos;f4&apos;</span>)})</span><br><span class="line">array([(<span class="hljs-string">b&apos;M&apos;</span>, <span class="hljs-number">21</span>, <span class="hljs-number">72.</span>), (<span class="hljs-string">b&apos;F&apos;</span>, <span class="hljs-number">35</span>, <span class="hljs-number">58.</span>)],</span><br><span class="line">          dtype=[(<span class="hljs-string">&apos;gender&apos;</span>, <span class="hljs-string">&apos;S1&apos;</span>), (<span class="hljs-string">&apos;age&apos;</span>, <span class="hljs-string">&apos;&lt;i4&apos;</span>), (<span class="hljs-string">&apos;weight&apos;</span>, <span class="hljs-string">&apos;&lt;f4&apos;</span>)])</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>c = StringIO(<span class="hljs-string">u&quot;1,0,2\\n3,0,4&quot;</span>)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>x, y = np.loadtxt(c, delimiter=<span class="hljs-string">&apos;,&apos;</span>, usecols=(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>), unpack=<span class="hljs-literal">True</span>)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>x</span><br><span class="line">array([<span class="hljs-number">1.</span>, <span class="hljs-number">3.</span>])</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>y</span><br><span class="line">array([<span class="hljs-number">2.</span>, <span class="hljs-number">4.</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="numpy&#x7D22;&#x5F15;&#x548C;&#x5207;&#x7247;"><a href="#numpy&#x7D22;&#x5F15;&#x548C;&#x5207;&#x7247;" class="headerlink" title="numpy&#x7D22;&#x5F15;&#x548C;&#x5207;&#x7247;"></a>numpy&#x7D22;&#x5F15;&#x548C;&#x5207;&#x7247;</h2><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.array([[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>], [<span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>]])</span><br><span class="line">print(a[<span class="hljs-number">1</span>])  <span class="hljs-comment"># &#x53D6;&#x7B2C;&#x4E8C;&#x884C; [4 5 6 7]</span></span><br><span class="line">print(a[:, <span class="hljs-number">2</span>])  <span class="hljs-comment"># &#x53D6;&#x7B2C;&#x4E09;&#x5217; [ 2  6 10]</span></span><br><span class="line">print(a[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>])  <span class="hljs-comment"># &#x53D6;&#x7B2C;&#x4E8C;&#x884C;&#x548C;&#x7B2C;&#x4E09;&#x884C; [[ 4  5  6  7] [ 8  9 10 11]]</span></span><br><span class="line">print(a[:, <span class="hljs-number">2</span>:<span class="hljs-number">4</span>])  <span class="hljs-comment"># &#x53D6;&#x7B2C;&#x4E09;&#x5217;&#x548C;&#x7B2C;&#x56DB;&#x5217; [[ 2  3] [ 6  7] [10 11]]</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># bool&#x7D22;&#x5F15;&#x66FF;&#x6362;&#x6570;&#x5B57;</span></span><br><span class="line">a[:, <span class="hljs-number">2</span>:<span class="hljs-number">4</span>] = <span class="hljs-number">0</span> <span class="hljs-comment"># [[0 1 0 0] [4 5 0 0] [8 9 0 0]]</span></span><br><span class="line">a[a &lt; <span class="hljs-number">4</span>] = <span class="hljs-number">-1</span> <span class="hljs-comment"># [[-1 -1 -1 -1] [ 4  5  6  7] [ 8  9 10 11]]</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="numpy&#x4E09;&#x5143;&#x8FD0;&#x7B97;&#x7B26;"><a href="#numpy&#x4E09;&#x5143;&#x8FD0;&#x7B97;&#x7B26;" class="headerlink" title="numpy&#x4E09;&#x5143;&#x8FD0;&#x7B97;&#x7B26;"></a>numpy&#x4E09;&#x5143;&#x8FD0;&#x7B97;&#x7B26;</h2><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line">t = np.arange(<span class="hljs-number">24</span>).reshape((<span class="hljs-number">4</span>, <span class="hljs-number">6</span>))</span><br><span class="line">print(np.where(t &lt; <span class="hljs-number">10</span>, <span class="hljs-number">0</span>, <span class="hljs-number">10</span>)) <span class="hljs-comment"># &#x5C0F;&#x4E8E;10&#x7684;&#x66FF;&#x6362;&#x4E3A;0&#xFF0C;&#x5426;&#x5219;&#x66FF;&#x6362;&#x4E3A;10</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="hljs-string">[[ 0  0  0  0  0  0]</span></span><br><span class="line"><span class="hljs-string"> [ 0  0  0  0 10 10]</span></span><br><span class="line"><span class="hljs-string"> [10 10 10 10 10 10]</span></span><br><span class="line"><span class="hljs-string"> [10 10 10 10 10 10]]</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="hljs-string">If all the arrays are 1-D, `where` is equivalent to::</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">        [xv if c else yv</span></span><br><span class="line"><span class="hljs-string">         for c, xv, yv in zip(condition, x, y)]</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="numpy&#x4E2D;&#x7684;&#x88C1;&#x526A;clip"><a href="#numpy&#x4E2D;&#x7684;&#x88C1;&#x526A;clip" class="headerlink" title="numpy&#x4E2D;&#x7684;&#x88C1;&#x526A;clip"></a>numpy&#x4E2D;&#x7684;&#x88C1;&#x526A;clip</h2><figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"></span><br><span class="line">t = np.arange(<span class="hljs-number">24</span>).reshape((<span class="hljs-number">4</span>, <span class="hljs-number">6</span>))</span><br><span class="line">print(t.clip(<span class="hljs-number">10</span>, <span class="hljs-number">18</span>))	<span class="hljs-comment"># &#x5C0F;&#x4E8E;10&#x7684;&#x66FF;&#x6362;&#x4E3A;10&#xFF0C;&#x5927;&#x4E8E;18&#x7684;&#x66FF;&#x6362;&#x4E3A;18</span></span><br><span class="line"></span><br><span class="line">t = t.astype(float)		<span class="hljs-comment"># &#x6570;&#x7EC4;&#x8F6C;&#x6362;&#x4E3A;float&#x7C7B;&#x578B;</span></span><br><span class="line">t[<span class="hljs-number">3</span>, <span class="hljs-number">3</span>], t[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>], t[<span class="hljs-number">3</span>, <span class="hljs-number">5</span>] = np.nan, np.nan, np.nan</span><br><span class="line">print(t.clip(<span class="hljs-number">10</span>, <span class="hljs-number">18</span>))</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># &#x8FD0;&#x884C;&#x7ED3;&#x679C;</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="hljs-string">[[10 10 10 10 10 10]</span></span><br><span class="line"><span class="hljs-string"> [10 10 10 10 10 11]</span></span><br><span class="line"><span class="hljs-string"> [12 13 14 15 16 17]</span></span><br><span class="line"><span class="hljs-string"> [18 18 18 18 18 18]]</span></span><br><span class="line"><span class="hljs-string"> </span></span><br><span class="line"><span class="hljs-string">[[10. 10. 10. 10. 10. 10.]</span></span><br><span class="line"><span class="hljs-string"> [10. 10. 10. 10. 10. 11.]</span></span><br><span class="line"><span class="hljs-string"> [12. 13. 14. 15. 16. 17.]</span></span><br><span class="line"><span class="hljs-string"> [18. 18. 18. nan nan nan]]</span></span><br><span class="line"><span class="hljs-string">&quot;&quot;&quot;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="&#x5173;&#x4E8E;nan&#x548C;inf"><a href="#&#x5173;&#x4E8E;nan&#x548C;inf" class="headerlink" title="&#x5173;&#x4E8E;nan&#x548C;inf"></a>&#x5173;&#x4E8E;nan&#x548C;inf</h3><ol>
+<li><p>nan(NAN, Nan): not a number</p>
+<p> &#x51FA;&#x73B0;nan&#x7684;&#x6761;&#x4EF6;&#xFF1A;&#x9996;&#x5148;&#x6570;&#x636E;&#x4E3A;float&#x5E76;&#x4E14;&#x6709;&#x7F3A;&#x5931;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x6B21;&#x5C31;&#x662F;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x4E0D;&#x5408;&#x9002;&#x7684;&#x8BA1;&#x7B97;&#x7684;&#x65F6;&#x5019;&#x3002;</p>
+</li>
+<li><p>inf(-inf, +inf): &#x65E0;&#x7A77;&#x5927;</p>
+<p> &#x51FA;&#x73B0;inf&#x7684;&#x6761;&#x4EF6;&#xFF1A;1&#x4E2A;&#x6570;&#x5B57;&#x9664;&#x4EE5;0&#x3002;</p>
+ <figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># nan&#x7684;&#x6CE8;&#x610F;&#x70B9;</span></span><br><span class="line"><span class="hljs-comment"># np.nan != np.nan</span></span><br><span class="line"><span class="hljs-comment"># &#x5229;&#x7528;</span></span><br><span class="line"><span class="hljs-comment"># &#x5224;&#x65AD;&#x6570;&#x7EC4;&#x4E2D;nan&#x7684;&#x4E2A;&#x6570;</span></span><br><span class="line">np.count_nonzero(t != t)</span><br><span class="line"><span class="hljs-comment"># &#x628A;nan&#x66FF;&#x6362;&#x4E3A;0</span></span><br><span class="line">t[np.isnan(t)] = <span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-comment"># nan&#x548C;&#x4EFB;&#x4F55;&#x503C;&#x8BA1;&#x7B97;&#x90FD;&#x4E3A;nan</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p> &#x6CE8;&#x610F;&#xFF1A;</p>
+<p> ==&#x5982;&#x679C;&#x628A;&#x7F3A;&#x5931;&#x503C;nan&#x66FF;&#x6362;&#x4E3A;0&#x540E;&#xFF0C;&#x4F1A;&#x5F71;&#x54CD;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x5747;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x628A;&#x7F3A;&#x5931;&#x7684;&#x6570;&#x503C;&#x66FF;&#x6362;&#x4E3A;&#x5747;&#x503C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x5220;&#x9664;&#x7F3A;&#x5931;&#x503C;&#x7684;&#x4E00;&#x884C;&#x3002;==</p>
+</li>
+</ol>
+<h2 id="numpy&#x4E2D;&#x5E38;&#x7528;&#x7684;&#x7EDF;&#x8BA1;&#x51FD;&#x6570;"><a href="#numpy&#x4E2D;&#x5E38;&#x7528;&#x7684;&#x7EDF;&#x8BA1;&#x51FD;&#x6570;" class="headerlink" title="numpy&#x4E2D;&#x5E38;&#x7528;&#x7684;&#x7EDF;&#x8BA1;&#x51FD;&#x6570;"></a>numpy&#x4E2D;&#x5E38;&#x7528;&#x7684;&#x7EDF;&#x8BA1;&#x51FD;&#x6570;</h2></body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/visualize/">#visualize</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2020/10/20/Learning-Algorithm/">Learning Algorithm.md</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<div id="SOHUCS" sid="2020/10/23/Data-analysis/"></div>
+<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+    appid: 'cyv4cV7wa',
+    conf: '36cfe50d5b00bf2874f82a61d59d9a8a'
+});
+</script>
+
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2020 X1R&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        target="_blank" rel="noopener" href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" target="_blank" rel="noopener" href="https://github.com/TulnersXu">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+</body>
+</html>
